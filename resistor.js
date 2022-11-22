@@ -245,12 +245,18 @@ function getTolerance(color) {
  *
  * must use functions in this file to build the string using a template literal
  */
-function getResistorOhms(bands) {
+function getResistorOhms(bandsArr) {
+  const bands = {
+    color1: bandsArr[0],
+    color2: bandsArr[1],
+    multiplier: bandsArr[2],
+    tolerance: bandsArr[3],
+  };
+
   const val = getThreeBandValue(bands);
   const format = formatNumber(val);
   const tolerance = getTolerance(bands.tolerance);
   return `Resistor value: ${format} Ohms ${tolerance}`;
 }
-
 
 export { getResistorOhms };
